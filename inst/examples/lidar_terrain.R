@@ -37,3 +37,5 @@ coords <- as.data.frame(las@data[, c("X", "Y", "Z")])
 coords <- coords[!duplicated(coords[, 1:2]), ]
 tr <- triangulate(pslg(P = coords[, 1:2], PA = coords[, 3, drop = FALSE]))
 rgl.triangles(cbind(tr$P, tr$PA)[t(tr$T), ])
+
+saveRDS(tr, file = "inst/examples/lidar_terrain.rds", compress = "bzip2")
