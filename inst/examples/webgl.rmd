@@ -1,0 +1,23 @@
+---
+title: "Untitled"
+author: "Michael Sumner"
+date: "February 14, 2018"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(rgl)
+tr <- readRDS("lidar_terrain.rds")
+ln <- readRDS("lidar_line.rds")
+cols <- readRDS("lidar_terrain_cols.rds")
+rgl.triangles(cbind(tr$P, tr$PA)[t(tr$T), ], col = rep(cols, each = 3))
+lines3d(ln)
+rglwidget(width = 768 * 2, height = 666* 2)
+#figWidth()
+```
